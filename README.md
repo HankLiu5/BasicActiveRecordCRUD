@@ -9,9 +9,11 @@
 所以用了類似mapping的方式把key改名。
 
 ```ruby
-mappings = {:name => :list_name, :due_date => :list_due_date}
-params.keys.each { |k| params[ mappings[k] ] = params.delete(k) if mappings[k] }
-@todolist = TodoList.create(params)
+def create_todolist(params)
+    mappings = {:name => :list_name, :due_date => :list_due_date}
+    params.keys.each { |k| params[ mappings[k] ] = params.delete(k) if mappings[k] }
+    @todolist = TodoList.create(params)
+end
 ```
 
 另外在update & delete的地方用到了DRY的概念，
