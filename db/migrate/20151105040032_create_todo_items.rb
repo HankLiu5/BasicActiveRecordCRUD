@@ -4,7 +4,9 @@ class CreateTodoItems < ActiveRecord::Migration
       t.date :due_date
       t.string :title
       t.text :description
-      t.boolean :completed, :default => false
+      t.boolean :completed, :default => false # cannot be set when generate the model.
+      # link to todo_list
+      t.references :todo_list, index: true, foreign_key: true
 
       t.timestamps null: false
     end

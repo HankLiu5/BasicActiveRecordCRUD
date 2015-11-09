@@ -1,23 +1,31 @@
-# BasicActiveRecordCRUD
+# Active Record Relationships
 
-第一步主要是利用scaffold創造出User, Profile, TodoList, TodoItem四個表單。
+這次的作業主要是利用上一次的作業(在master branch中)，來練習relationships。
 
-第二步是在assignment資料夾下的assignment.rb練習CRUD。
+1. 首先要先了解到所有表格的關係
 
-在create_todolist裡面，因為資料的hash.key是提供:name & :due_date，
-因此必須把它轉換成:list_name & :list_due_date，以符合資料庫格式，
-所以用了類似mapping的方式把key改名。
+     |------| 1      1 |----------|
+     | User |----------| Profile  |
+     |------|          |----------|
+          |
+          |  1   * |----------| 1      * |----------|
+          |--------| TodoList |----------| TodoItem |
+                   |----------|          |----------|
 
-```ruby
-def create_todolist(params)
-    mappings = {:name => :list_name, :due_date => :list_due_date}
-    params.keys.each { |k| params[ mappings[k] ] = params.delete(k) if mappings[k] }
-    @todolist = TodoList.create(params)
-end
-```
+2. 接著在app/models下的檔案建立各個表格的關係，然後在db/migrate中的檔案。
+（詳情請看檔案中的註解）
 
-另外在update & delete的地方用到了DRY的概念，
-直接使用get_user_byid跟get_todolist_byid來抓取資料。
+3. 建立seeds.rb
 
-最後在delete的地方有destroy跟delete可以使用
-destroy在刪除row之前會先回傳row的data(稱為callback)，而delete不會callback。
+4. 在TodoList跟TodoItem中設定default_scope，讓排序是ascending的順序
+
+5. 在User跟Profile中建立validation
+
+6. 在各model中建立dependency
+
+7. 在User model class下加入一個method -- get_completed_count
+
+8. 加入一個class method -- self.get_all_profiles，其中會使用到SQL語法(optional)，
+設定搜尋範圍時要避免SQL injection，最後依照ascending的順序回傳birth_year。
+
+That's it!
