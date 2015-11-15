@@ -24,8 +24,12 @@
     <%= f.text_area :description %>
   </div>
   <div class="field">
-    <%= f.label :completed %><br>
-    <%= f.check_box :completed %>
+    <!-- Using conditional logic and object.persisted? or object.new_record?
+    let the completed property be displayed when editing and not when creating. -->
+    <% if @todo_item.persisted? %>
+      <%= f.label :completed %><br>
+      <%= f.check_box :completed %>
+    <% end %>
   </div>
   <div class="actions">
     <%= f.submit %>

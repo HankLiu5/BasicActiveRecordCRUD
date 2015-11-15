@@ -29,7 +29,7 @@ ActiveRecord::Schema.define(version: 20151105040032) do
     t.date     "due_date"
     t.string   "title"
     t.text     "description"
-    t.boolean  "completed",    default: false # 在migrate的檔案中設定default value.
+    t.boolean  "completed",    default: false
     t.integer  "todo_list_id"
     t.datetime "created_at",                   null: false
     t.datetime "updated_at",                   null: false
