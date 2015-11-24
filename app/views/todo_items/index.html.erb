@@ -1,18 +1,12 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Listing Todo Items</h1>
-<!-- Same output, different ways. -->
-<!-- The @number_of_completed_todos is from the index method in todo_items controller -->
-<p>Number of Completed Todos: <%= @number_of_completed_todos %></p>
-<!-- "concat" is like puts in eRuby code, and should be put in a non-output code block
-This can be used for if-condition of for-loop operations. -->
-<p><% concat "Number of Completed Todos: #{@number_of_completed_todos}" %></p>
 
 <table>
   <thead>
     <tr>
-      <th>Due date</th>
       <th>Title</th>
+      <th>Due date</th>
       <th>Description</th>
       <th>Completed</th>
       <th colspan="3"></th>
@@ -22,13 +16,12 @@ This can be used for if-condition of for-loop operations. -->
   <tbody>
     <% @todo_items.each do |todo_item| %>
       <tr>
-        <td><%= todo_item.due_date %></td>
         <td><%= todo_item.title %></td>
+        <td><%= todo_item.due_date %></td>
         <td><%= todo_item.description %></td>
         <td><%= todo_item.completed %></td>
         <td><%= link_to 'Show', todo_item %></td>
-        <!-- Only display this after showing the data.
-        <td><%= link_to 'Edit', edit_todo_item_path(todo_item) %></td> -->
+        <td><%= link_to 'Edit', edit_todo_item_path(todo_item) %></td>
         <td><%= link_to 'Destroy', todo_item, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>

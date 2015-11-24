@@ -5,6 +5,8 @@ class User < ActiveRecord::Base
   # make sure the username is not empty.
   validates :username, presence: true
 
+  has_secure_password
+
   def get_completed_count(user)
     # first find out what todo_item is completed in user, then count.
     user.todo_items.where(:completed => true).count

@@ -12,24 +12,20 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :due_date %><br>
-    <%= f.date_select :due_date %>
-  </div>
-  <div class="field">
     <%= f.label :title %><br>
     <%= f.text_field :title %>
+  </div>
+  <div class="field">
+    <%= f.label :due_date %><br>
+    <%= f.date_select :due_date %>
   </div>
   <div class="field">
     <%= f.label :description %><br>
     <%= f.text_area :description %>
   </div>
   <div class="field">
-    <!-- Using conditional logic and object.persisted? or object.new_record?
-    let the completed property be displayed when editing and not when creating. -->
-    <% if @todo_item.persisted? %>
-      <%= f.label :completed %><br>
-      <%= f.check_box :completed %>
-    <% end %>
+    <%= f.label :completed %><br>
+    <%= f.check_box :completed %>
   </div>
   <div class="actions">
     <%= f.submit %>
