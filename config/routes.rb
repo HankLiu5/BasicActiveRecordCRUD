@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  # We should put the root route at the top of the file, 
+  # because it is the most popular route and should be matched first.
+  root to: "todo_lists#index"
   resources :sessions, only: [:new, :create, :destroy]
 
   get "/login" => "sessions#new", as: "login"
@@ -10,7 +13,7 @@ Rails.application.routes.draw do
   resources :profiles
   resources :users
 
-  root to: "todo_lists#index"
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
