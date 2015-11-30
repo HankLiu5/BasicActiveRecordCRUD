@@ -1,7 +1,6 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Listing Todo Lists</h1>
-
 <table>
   <thead>
     <tr>
@@ -23,7 +22,9 @@
     <% end %>
   </tbody>
 </table>
+<p/>
+
+<%= will_paginate @todo_lists %>
 
 <br>
-
 <%= link_to 'New Todo list', new_todo_list_path %>
