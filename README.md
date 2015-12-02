@@ -1,17 +1,8 @@
-# Active Pack
+# Nested, Sessions and Authentication.
 
-這次的作業是接續module2的作業，但只使用todo_items來練習
+這次的作業是接續module3的作業，將todo_items放進todo_lists中並與user做連結，
+讓某user登入之後只能看到自己的資訊。
 
-1. create完之後直接回到index (todo_items_path)
+詳細的內容及更動都在各commit裡面。
 
-2. 去除index的Edit link
-
-3. 在_form.html.erb(partial)中加入if-condition讓completed只有在edit的時候能夠修改(default is false)
-
-4. 在TodoItem class下加入一個class method來return completed items的數量
-
-5. 在TodoItemsController的index method中設定一個variable儲存TodoItem.count_completed_items的return value
-
-6. 在index加入completed todo items的數量
-
-That's it!
+這段課程就這樣告一段落了！
